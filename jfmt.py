@@ -6,7 +6,7 @@ import sys, os
 
 COMMAND = "java -jar ./fmt/google-java-format-1.0-all-deps.jar "
 # Verbose output.
-DEBUG = True
+DEBUG = False
 
 
 def parse_argv():
