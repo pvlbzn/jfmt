@@ -4,7 +4,17 @@ from __future__ import print_function
 
 import sys, os
 
-COMMAND = "java -jar ./fmt/google-java-format-1.0-all-deps.jar "
+
+# Get script location path in order to find
+# a real address of the google-java-format.
+def origin_path():
+    return os.path.dirname(os.path.realpath(sys.argv[0]))
+
+# Global variable which represents a command
+# to OS, which later will be executes.
+COMMAND = "java -jar " + origin_path(
+) + "/" + "fmt/google-java-format-1.0-all-deps.jar"
+
 # Verbose output.
 DEBUG = False
 
@@ -29,24 +39,25 @@ def format_files(p):
         for fname in fnames:
             if fname.endswith('.java'):
                 fpath = dirpath + '/' + fname
-                c = COMMAND + "--replace " + fpath
+                c = COMMAND + " --replace " + fpath
                 os.system(c)
                 if DEBUG:
                     print("Path: ", dirpath)
                     print("Name: ", fname)
-                    print("Done.\n")
 
 
 def format_file(p):
     '''
     Format the file.
     '''
-    c = COMMAND + "--replace " + p
+    c = COMMAND + " --replace " + p
     os.system(c)
 
 
 def main():
+    print("Processing...")
     parse_argv()
+    print("Done.")
 
 
 if __name__ == '__main__':
