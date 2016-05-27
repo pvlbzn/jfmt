@@ -119,7 +119,7 @@ def check_source():
     Check is google-java-format is present or not.
     '''
     o = origin_path()
-    p = o + "/" + GJF
+    p = o + "/" + SUBDIR + GJF
     if os.path.isfile(p):
         return True
     else:
