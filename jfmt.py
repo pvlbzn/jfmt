@@ -37,7 +37,9 @@ def origin_path():
 # Current version name
 GJF = "google-java-format-1.0-all-deps.jar"
 # Command which will be executed by the os.system()
-COMMAND = "java -jar " + origin_path() + "/" + GJF
+# Subdirectory is child dir of the origin_path where source is stored.
+SUBDIR = "fmt/"
+COMMAND = "java -jar " + origin_path() + "/" + SUBDIR + GJF
 
 
 def format_files(p, verbose):
